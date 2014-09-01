@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1409595550 source:/home/auser/work_linux/algorithms/main.cpp
+	<iostream>
+
+1409595788 source:/home/auser/work_linux/algorithms/src/stack/Stack.cpp
+	<iostream>
+
