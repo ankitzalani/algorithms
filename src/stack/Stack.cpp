@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -8,14 +9,13 @@ private:
     struct Node
     {
         int data;
-        struct Node *next;
-    } *start, *node;
+        struct Node *prev;
+    } *node;
 
 public:
     Stack()
     {
         node = NULL;
-        start = node;
     }
 
     void push(int data)
@@ -23,27 +23,26 @@ public:
 
         Node *temp = new Node();
         temp -> data = data;
-        temp -> next = NULL;
+        temp -> prev = node;
+        node = temp;
 
-        if(node == NULL)
+    }
+
+    int pop()
+    {
+        int data = 0;
+        if(node != NULL)
         {
-            node = temp;
+            Node *temp = node;
+            data = node -> data;
+            node = node -> prev;
+            free(temp);
         }
         else
         {
-            node -> next = temp;
+            cout << "[Underflow] Stack is empty.";
         }
-        node = node -> next;
-    }
-
-    void print()
-    {
-        Node *n = start;
-        while(n -> next != NULL)
-        {
-            cout << n -> data;
-            n = n -> next;
-        }
+        return data;
     }
 
 };
@@ -55,7 +54,9 @@ int main()
     s.push(23);
     s.push(43);
 
-    s.print();
+    cout << s.pop() << endl;
+    cout << s.pop() << endl;
+    s.pop();
     return 0;
 
 }
