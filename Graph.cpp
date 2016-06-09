@@ -14,8 +14,8 @@ class Graph {
     }
     
     void addEdge(int u, int v) {
-        list[u].push_back(v);
-        list[v].push_back(u);
+        list[u].push_front(v);
+        list[v].push_front(u);
     }
     
     void printList() {
@@ -33,7 +33,7 @@ class Graph {
 int main() {
     
     Graph graph(5);
-    graph.addEdge(0,2);
+    graph.addEdge(0, 1);
     graph.addEdge(0, 4);
     graph.addEdge(1, 2);
     graph.addEdge(1, 3);
